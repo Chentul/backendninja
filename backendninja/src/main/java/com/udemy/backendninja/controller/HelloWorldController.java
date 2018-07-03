@@ -10,14 +10,10 @@ public class HelloWorldController {
 	
 	private int contador;
 	
-	
-	
 	public HelloWorldController() {
 		super();
 		this.contador = 0;
 	}
-
-
 
 	@GetMapping("/helloworld")
 	public String helloWorld() {

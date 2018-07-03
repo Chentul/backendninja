@@ -1,5 +1,3 @@
-#spring properties with yml format
-#banner text resource location (classpath -> src/main/resources)
 spring:
   banner:
     location: classpath:/banner.txt
