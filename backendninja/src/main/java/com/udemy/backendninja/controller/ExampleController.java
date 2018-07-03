@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.udemy.backendninja.model.Person;
+
 @Controller
 @RequestMapping("/example")
 public class ExampleController {
@@ -14,13 +16,16 @@ public class ExampleController {
 	
 	@GetMapping("/exampleString")
 	public String exampleString(Model model) {
-		model.addAttribute("name", "Donald");
+		model.addAttribute("person", 
+							new Person("Donald", 80));
 		return EXAMPLE_VIEW;
 	}
 
 	@GetMapping("/exampleMAV")
 	public ModelAndView exampleMAV() {
-		return new ModelAndView(EXAMPLE_VIEW).addObject("name", "Micky");
+		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
+		mav.addObject("person", new Person("Micky", 29));
+		return mav;
 	}
 	
 }
