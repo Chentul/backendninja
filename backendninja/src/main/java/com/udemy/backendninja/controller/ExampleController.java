@@ -1,5 +1,8 @@
 package com.udemy.backendninja.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +19,24 @@ public class ExampleController {
 	
 	@GetMapping("/exampleString")
 	public String exampleString(Model model) {
-		model.addAttribute("person", 
-							new Person("Donald", 80));
+		model.addAttribute("people", this.getPeople());
 		return EXAMPLE_VIEW;
 	}
 
 	@GetMapping("/exampleMAV")
 	public ModelAndView exampleMAV() {
 		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
-		mav.addObject("person", new Person("Micky", 29));
+		mav.addObject("people", this.getPeople());
 		return mav;
+	}
+	
+	private List<Person> getPeople() {
+		List<Person> people = new ArrayList();
+		people.add(new Person("John", 23));
+		people.add(new Person("Mikel", 30));
+		people.add(new Person("Eva", 43));
+		people.add(new Person("Peter", 18));
+		return people;
 	}
 	
 }
