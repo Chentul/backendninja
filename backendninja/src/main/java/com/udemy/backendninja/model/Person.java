@@ -4,6 +4,10 @@ public class Person {
 
 	private String name;
 	private int age;
+	
+	/** se crea el contrusctor vacio para poder
+	dar de alta a una persona **/
+	public Person() {}
 
 	public Person(String name, int age) {
 		super();

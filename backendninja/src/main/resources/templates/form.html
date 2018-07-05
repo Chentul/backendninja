@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head lang="en">
+	 <meta charset="UTF-8" />
+	 <title>Spring Boot | Form</title>
+	 <style>
+		span {
+			display: inline-block;
+			width: 60px;
+		}	 
+		input[type=submit] {
+			display: inline-block;
+			width: 239px;
+		}
+	 </style>
+</head>
+<body>
+	<!-- @{url to redirect}  -->
+	<!-- object to manage ${person}  -->
+	<!-- th:field="*{the field that belongs to the object}" -->
+	<form action="#"
+		  th:action="@{/example3/addperson}"
+		  th:object="${person}"
+		  method="post">
+	    <p>
+	    	<span>Name: </span>
+	    	<input type="text" th:field="*{name}" />
+	    </p>
+	    <p>
+	    	<span>Age: </span>
+	    	<input type="number" th:field="*{age}" />
+	    </p>
+	    <p>
+	    	<input type="submit" value="Submit" />
+	    </p>
+	</form>
+</body>
+</html>
