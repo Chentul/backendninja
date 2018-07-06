@@ -1,8 +1,25 @@
 package com.udemy.backendninja.model;
 
-public class Person {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.Size;
 
+public class Person {
+	
+	/**
+	 * @NotNull -> validate attributes
+	 * @Size -> validate values from min to max
+	 * @Min -> validate value that gas to be grather than 18
+	 */
+	@NotNull
+//	@Size(min=2, max=6)
+	@Min(2)
+	@Max(7)
 	private String name;
+	
+	@NotNull
+	@Min(18)
 	private int age;
 	
 	/** se crea el contrusctor vacio para poder

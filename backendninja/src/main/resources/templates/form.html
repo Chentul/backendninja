@@ -26,9 +26,19 @@
 	    	<span>Name: </span>
 	    	<input type="text" th:field="*{name}" />
 	    </p>
+		<!-- fields its the object that return BindingResults -->
+	    <p th:if="${#fields.hasErrors('name')}" >
+<!-- 	    	th:errors="*{name}"> -->
+	    	Name has to be from 2 to 7 letters
+	    </p>
 	    <p>
 	    	<span>Age: </span>
 	    	<input type="number" th:field="*{age}" />
+	    </p>
+	    <!-- fields its the object that return BindingResults -->
+	    <p th:if="${#fields.hasErrors('age')}" >
+<!-- 	    	th:errors="*{age}"> -->
+	    	Age has to be grather or equals than 18
 	    </p>
 	    <p>
 	    	<input type="submit" value="Submit" />
