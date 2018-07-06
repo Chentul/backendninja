@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.udemy.backendninja.component.ExampleComponent;
 import com.udemy.backendninja.model.Person;
+import com.udemy.backendninja.service.ExampleService;
 
 @Controller
 @RequestMapping("/example")
@@ -20,7 +21,12 @@ public class ExampleController {
 	
 	public static final String EXAMPLE_VIEW = "example";
 	
-	// inject the component
+	// inject services
+	@Autowired
+	@Qualifier("exampleService")
+	private ExampleService exampleService;
+	
+	// inject componenets
 	@Autowired
 	@Qualifier("exampleComponent")
 	private ExampleComponent exampleComponent; // we don't need the keyword new
@@ -28,24 +34,15 @@ public class ExampleController {
 	@GetMapping("/exampleString")
 	public String exampleString(Model model) {
 		exampleComponent.sayHello();
-		model.addAttribute("people", this.getPeople());
+		model.addAttribute("people", this.exampleService.getListPeople());
 		return EXAMPLE_VIEW;
 	}
 
 	@GetMapping("/exampleMAV")
 	public ModelAndView exampleMAV() {
 		ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
-		mav.addObject("people", this.getPeople());
+		mav.addObject("people", this.exampleService.getListPeople());
 		return mav;
-	}
-	
-	private List<Person> getPeople() {
-		List<Person> people = new ArrayList();
-		people.add(new Person("John", 23));
-		people.add(new Person("Mikel", 30));
-		people.add(new Person("Eva", 43));
-		people.add(new Person("Peter", 18));
-		return people;
 	}
 	
 }
